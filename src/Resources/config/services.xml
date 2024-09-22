@@ -1,0 +1,29 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <service id="Geschenkkoerbe\CrifCheckoutValidator\Util\Logger" class="Monolog\Logger">
+            <factory service="Shopware\Core\Framework\Log\LoggerFactory" method="createRotating"/>
+            <argument type="string">crif_checkout_validator</argument>
+        </service>
+        <service id="Geschenkkoerbe\CrifCheckoutValidator\Service\GeneralConfig">
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
+        </service>
+        <service id="Geschenkkoerbe\CrifCheckoutValidator\Service\CrifApi">
+            <argument type="service" id="Geschenkkoerbe\CrifCheckoutValidator\Service\GeneralConfig"/>
+        </service>
+        <service id="Geschenkkoerbe\CrifCheckoutValidator\Service\CrifValidator">
+            <argument type="service" id="Geschenkkoerbe\CrifCheckoutValidator\Service\CrifApi"/>
+            <argument type="service" id="country.repository"/>
+            <argument type="service" id="Geschenkkoerbe\CrifCheckoutValidator\Service\GeneralConfig"/>
+        </service>
+        <service id="Geschenkkoerbe\CrifCheckoutValidator\Subscriber\CheckInvoicePaymentSubscriber">
+            <argument type="service" id="router"/>
+            <argument type="service" id="Geschenkkoerbe\CrifCheckoutValidator\Service\GeneralConfig"/>
+            <argument type="service" id="Geschenkkoerbe\CrifCheckoutValidator\Service\CrifValidator"/>
+            <tag name="kernel.event_subscriber"/>
+        </service>
+    </services>
+</container>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/platform/master/src/Core/System/SystemConfig/Schema/config.xsd">
+    <card>
+        <title>CRIF Checkout Validator Settings</title>
+        <input-field type="bool">
+            <name>enabled</name>
+            <label>Enabled</label>
+            <helpText>Enable or disable</helpText>
+        </input-field>
+        <input-field type="text">
+            <name>baseUrl</name>
+            <label>CRIF API Url</label>
+            <helpText>CRIF Url</helpText>
+            <required>1</required>
+        </input-field>
+        <input-field type="text">
+            <name>username</name>
+            <label>CRIF API Username</label>
+            <required>1</required>
+        </input-field>
+        <input-field type="text">
+            <name>password</name>
+            <label>CRIF API Password</label>
+            <required>1</required>
+        </input-field>
+        <component name="sw-entity-multi-id-select">
+            <name>paymentMethodsToCheck</name>
+            <entity>payment_method</entity>
+            <label>Payment methods to check</label>
+        </component>
+        <component name="sw-entity-multi-id-select">
+            <name>countriesToCheck</name>
+            <entity>country</entity>
+            <label>Countries to check others will be ignored</label>
+        </component>
+    </card>
+</config>

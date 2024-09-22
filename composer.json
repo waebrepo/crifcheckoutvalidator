@@ -1,0 +1,32 @@
+{
+  "name": "geschenkkoerbe/crif-checkout-validator",
+  "description": "Crif Checkout Validator",
+  "version": "1.0.0",
+  "type": "shopware-platform-plugin",
+  "authors": [
+    {
+      "name": "geschenkkoerbe.ch",
+      "homepage": "https://www.geschenkkoerbe.ch",
+      "role": "Manufacturer"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Geschenkkoerbe\\CrifCheckoutValidator\\": "src/"
+    }
+  },
+  "require": {
+    "ext-zlib": "*",
+    "php": "^7.4.3 || ^8.0",
+    "shopware/administration": "^6.5",
+    "shopware/core": "^6.5",
+    "shopware/storefront": "^6.5"
+  },
+  "extra": {
+    "shopware-plugin-class": "Geschenkkoerbe\\CrifCheckoutValidator\\CrifCheckoutValidator",
+    "label": {
+      "de-DE": "CRIF Checkout Validator",
+      "en-GB": "CRIF Checkout Validator"
+    }
+  }
+}
